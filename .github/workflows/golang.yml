@@ -2,8 +2,6 @@ name: Go
 
 on:
   push:
-    tags:
-      - v*
     branches:
       - main
   pull_request:
@@ -17,7 +15,6 @@ permissions:
 jobs:
 
   test:
-    name: lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-go@v3
