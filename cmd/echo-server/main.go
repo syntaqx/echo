@@ -5,9 +5,6 @@ import (
 	"net"
 	"net/http"
 	"os"
-
-	"golang.org/x/net/http2"
-	"golang.org/x/net/http2/h2c"
 )
 
 func main() {
@@ -18,7 +15,7 @@ func main() {
 
 	srv := &http.Server{
 		Addr:    net.JoinHostPort("", port),
-		Handler: h2c.NewHandler(http.HandlerFunc(handler), &http2.Server{}),
+		Handler: http.HandlerFunc(handler),
 	}
 
 	log.Printf("http server listening at %s\n", srv.Addr)
