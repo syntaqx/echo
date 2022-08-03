@@ -17,9 +17,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
         with:
           go-version: 1.19
-      - uses: actions/checkout@v3
-      - name: Run tests
+          cache: true
+      -
+        name: Install dependencies
+        run: go mod download
+      -
+        name: Run tests
         run: go test -v ./...
