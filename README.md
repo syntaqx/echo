@@ -1,2 +1,3 @@
-# echo
-A simple HTTP "echo" server for testing proxies, HTTP clients, deployments, whatever.
+# Echo Server
+
+The simplest "echo" server for HTTP testing purposes, or a simple docker image.
