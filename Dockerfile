@@ -1,13 +1,10 @@
-FROM golang:1.19-alpine AS builder
+FROM golang:1.20-alpine AS builder
 
 RUN apk add --update --no-cache \
   ca-certificates tzdata openssh git mercurial && update-ca-certificates \
   && rm -rf /var/cache/apk/*
 
 WORKDIR /src
-
-COPY go.mod* go.sum* ./
-RUN --mount=type=cache,target=/go/pkg/mod go mod download
 
 COPY . .
 RUN --mount=type=cache,target=/go/pkg/mod \
