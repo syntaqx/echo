@@ -15,8 +15,11 @@ func main() {
 	}
 
 	srv := &http.Server{
-		Addr:    net.JoinHostPort("", port),
-		Handler: http.HandlerFunc(handler),
+		Addr:         net.JoinHostPort("", port),
+		Handler:      http.HandlerFunc(handler),
+		IdleTimeout:  time.Minute,
+		ReadTimeout:  10 * time.Second,
+		WriteTimeout: 30 * time.Second,
 	}
 
 	log.Printf("http server listening at %s\n", srv.Addr)
