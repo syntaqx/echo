@@ -5,6 +5,8 @@ import (
 	"net/http"
 )
 
+const HelloWorld = "Hello, world!"
+
 func EchoHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, world!")
+	fmt.Fprintf(w, HelloWorld)
 }
