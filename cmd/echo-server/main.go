@@ -1,12 +1,13 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"net"
 	"net/http"
 	"os"
 	"time"
+
+	"github.com/syntaqx/echo-server/handler"
 )
 
 func main() {
@@ -17,7 +18,7 @@ func main() {
 
 	srv := &http.Server{
 		Addr:         net.JoinHostPort("", port),
-		Handler:      http.HandlerFunc(handler),
+		Handler:      http.HandlerFunc(handler.EchoHandler),
 		IdleTimeout:  time.Minute,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 30 * time.Second,
@@ -29,8 +30,4 @@ func main() {
 			panic(err)
 		}
 	}
-}
-
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Hello, world!")
 }
