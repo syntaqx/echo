@@ -8,5 +8,5 @@ import (
 const HelloWorld = "Hello, world!"
 
 func EchoHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, HelloWorld)
+	fmt.Fprint(w, HelloWorld)
 }
