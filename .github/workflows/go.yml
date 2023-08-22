@@ -27,6 +27,7 @@ jobs:
         name: Test
         run: go test -race -coverprofile=coverage.out -covermode=atomic ./...
       -
+        if: ${{ github.actor != 'dependabot[bot]' }}
         name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
